@@ -30,6 +30,9 @@ const App = () => {
     tl.to(stairParentRef.current, {
       display: "none",
     });
+    tl.to(".stair", {
+      y: "0%",
+    });
   });
 
   return (
