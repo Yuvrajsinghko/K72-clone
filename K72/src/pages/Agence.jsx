@@ -1,11 +1,37 @@
-import React from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import React, { useRef } from "react";
 
 function Agence() {
+  gsap.registerPlugin(ScrollTrigger);
+  const imageDivRef = useRef(null);
+  const imageRef=useRef(null)
+  const imageArray=['']
+  
+
+  useGSAP(() => {
+    gsap.to(imageDivRef.current, {
+      scrollTrigger: {
+        trigger:imageDivRef.current,
+        markers:true,
+        start:"top 25.5%",
+        end:"top -120%",
+        pin:true,
+        scrub:true
+      },
+    });
+  });
+
   return (
     <div>
       <div className="section1">
-        <div className=" absolute overflow-hidden h-[19vw]  bg-amber-400  top-55 left-[29.8vw] w-[15vw] rounded-4xl  ">
+        <div
+          ref={imageDivRef}
+          className=" absolute overflow-hidden h-[19vw]    top-55 left-[29.8vw] w-[15vw] rounded-4xl  "
+        >
           <img
+            ref={imageRef}
             className="h-full object-cover w-full"
             src="/Images/image101.jpg"
             alt=""
@@ -29,14 +55,14 @@ function Agence() {
             </p>
           </div>
           <div className="box mt-[16vh] gap-[2vw] h-[55vh]  flex justify-center items-center pl-[10vw] pr-[10vw]">
-            <div className="box1  p-[1vw] flex flex-col justify-between text-[2.2vh] h-[100%] w-[30vw]">
+            <div className="box1  p-[1vw] flex flex-col justify-between text-[2.2vh] h-full w-[30vw]">
               <h1>Expertise</h1>
               <p>
                 Our Work_ Born in curiosity, raised by dedication and fed with a
                 steady diet of creativity.
               </p>
             </div>
-            <div className="box2 text-[2.2vh] p-[1vw]   justify-between flex flex-col h-[100%] w-[30vw]">
+            <div className="box2 text-[2.2vh] p-[1vw]   justify-between flex flex-col h-full w-[30vw]">
               <ul>
                 <li>Strategy</li>
                 <li>Advertising</li>
@@ -50,7 +76,7 @@ function Agence() {
                 ourselves.
               </p>
             </div>
-            <div className="box3  p-[1vw]  text-[2.2vh] justify-end flex flex-col h-[100%] w-[30vw]">
+            <div className="box3  p-[1vw]  text-[2.2vh] justify-end flex flex-col h-full w-[30vw]">
               Our Culture_ We’re open to each other. Period. The team works
               together to create a space that makes us proud.
             </div>
