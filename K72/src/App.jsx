@@ -3,15 +3,23 @@ import { Link, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Agence from './pages/Agence'
+import { useGSAP } from '@gsap/react'
 
 
 
 const App = () => {
+
+  useGSAP(()=>{
+    
+  })
+
   return (
     <div className='text-white'>     
       <div className='h-screen fixed z-10 flex w-full'>
         <div className='h-full w-1/5 bg-amber-700'></div>
+        <div className='h-full w-1/5 bg-amber-200'></div>
         <div className='h-full w-1/5 bg-amber-700'></div>
+        <div className='h-full w-1/5 bg-amber-200'></div>
         <div className='h-full w-1/5 bg-amber-700'></div>
       </div>
       
