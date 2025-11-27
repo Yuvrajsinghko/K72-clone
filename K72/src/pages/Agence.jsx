@@ -6,19 +6,35 @@ import React, { useRef } from "react";
 function Agence() {
   gsap.registerPlugin(ScrollTrigger);
   const imageDivRef = useRef(null);
-  const imageRef=useRef(null)
-  const imageArray=['']
-  
+  const imageRef = useRef(null);
+  const imageArray = [
+    "/Images/image101.jpg",
+    "/Images/image102.jpg",
+    "/Images/image103.jpg",
+    "/Images/image104.jpg",
+    "/Images/image105.jpg",
+    "/Images/image106.jpg",
+    "/Images/image107.jpg",
+    "/Images/image108.jpg",
+    "/Images/image109.jpg",
+    "/Images/image110.jpg",
+    "/Images/image111.jpg",
+    "/Images/image112.jpg",
+  ];
 
   useGSAP(() => {
     gsap.to(imageDivRef.current, {
       scrollTrigger: {
-        trigger:imageDivRef.current,
-        markers:true,
-        start:"top 25.5%",
-        end:"top -120%",
-        pin:true,
-        scrub:true
+        trigger: imageDivRef.current,
+        start: "top 25.5%",
+        end: "top -120%",
+        pin: true,
+        scrub: true,
+        onUpdate: (event) => {
+          let imageIndex = Math.floor(event.progress * (imageArray.length-1));
+          imageRef.current.src = imageArray[imageIndex];
+          
+        },
       },
     });
   });
@@ -28,7 +44,7 @@ function Agence() {
       <div className="section1">
         <div
           ref={imageDivRef}
-          className=" absolute overflow-hidden h-[19vw]    top-55 left-[29.8vw] w-[15vw] rounded-4xl  "
+          className=" absolute overflow-hidden h-[19vw] top-55 left-[29.8vw] w-[15vw] rounded-4xl  "
         >
           <img
             ref={imageRef}
