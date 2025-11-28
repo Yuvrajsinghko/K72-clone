@@ -5,10 +5,10 @@ import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 function Stairs(props) {
-  let stairParentRef = useRef(null);
-  let currentPath = useLocation().pathname;
-  console.log(props.children);
-  let pageRef = useRef(null)
+  const currentPath = useLocation().pathname;
+
+  const stairParentRef = useRef(null);
+  const pageRef = useRef(null);
   useGSAP(() => {
     const tl = gsap.timeline();
 
@@ -35,10 +35,11 @@ function Stairs(props) {
       y: "0%",
     });
 
-    gsap.from(pageRef.current,{
-      opacity:0,
-      delay:1.2
-    })
+    gsap.from(pageRef.current, {
+      opacity: 0,
+      delay: 1,
+      scale: 1.2,
+    });
   }, [currentPath]);
   return (
     <div>
@@ -52,9 +53,7 @@ function Stairs(props) {
           <div className="stair h-full w-1/6 bg-black"></div>
         </div>
       </div>
-      <div ref={pageRef}>
-        {props.children}
-      </div>
+      <div ref={pageRef}>{props.children}</div>
     </div>
   );
 }
