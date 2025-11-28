@@ -2,9 +2,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React from "react";
 import { useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 function Stairs() {
   let stairParentRef = useRef(null);
+  let currentPath = useLocation().pathname;
+  console.log(currentPath);
   useGSAP(() => {
     const tl = gsap.timeline();
 
@@ -30,16 +33,18 @@ function Stairs() {
     tl.to(".stair", {
       y: "0%",
     });
-  });
+  }, [currentPath]);
   return (
-    <div ref={stairParentRef} className="h-screen fixed z-10  w-full">
-      <div className="h-full w-full flex ">
-        <div className="stair h-full w-1/6 bg-black"></div>
-        <div className="stair h-full w-1/6 bg-black"></div>
-        <div className="stair h-full w-1/6 bg-black"></div>
-        <div className="stair h-full w-1/6 bg-black"></div>
-        <div className="stair h-full w-1/6 bg-black"></div>
-        <div className="stair h-full w-1/6 bg-black"></div>
+    <div>
+      <div ref={stairParentRef} className="h-screen fixed z-10 top-0 w-full">
+        <div className="h-full w-full flex ">
+          <div className="stair h-full w-1/6 bg-black"></div>
+          <div className="stair h-full w-1/6 bg-black"></div>
+          <div className="stair h-full w-1/6 bg-black"></div>
+          <div className="stair h-full w-1/6 bg-black"></div>
+          <div className="stair h-full w-1/6 bg-black"></div>
+          <div className="stair h-full w-1/6 bg-black"></div>
+        </div>
       </div>
     </div>
   );

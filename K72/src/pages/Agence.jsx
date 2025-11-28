@@ -40,7 +40,7 @@ function Agence() {
   });
 
   return (
-    <div>
+    <div >
       <div className="section1">
         <div
           ref={imageDivRef}
