@@ -4,10 +4,11 @@ import React from "react";
 import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-function Stairs() {
+function Stairs(props) {
   let stairParentRef = useRef(null);
   let currentPath = useLocation().pathname;
-  console.log(currentPath);
+  console.log(props.children);
+  let pageRef = useRef(null)
   useGSAP(() => {
     const tl = gsap.timeline();
 
@@ -33,6 +34,11 @@ function Stairs() {
     tl.to(".stair", {
       y: "0%",
     });
+
+    gsap.from(pageRef.current,{
+      opacity:0,
+      delay:1.2
+    })
   }, [currentPath]);
   return (
     <div>
@@ -45,6 +51,9 @@ function Stairs() {
           <div className="stair h-full w-1/6 bg-black"></div>
           <div className="stair h-full w-1/6 bg-black"></div>
         </div>
+      </div>
+      <div ref={pageRef}>
+        {props.children}
       </div>
     </div>
   );
