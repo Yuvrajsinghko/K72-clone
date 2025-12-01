@@ -37,13 +37,13 @@ function Stairs(props) {
 
     gsap.from(pageRef.current, {
       opacity: 0,
-      delay:0.4,
+      delay:1.5,
       scale: 1.2,
     });
   }, [currentPath]);
   return (
     <div>
-      <div ref={stairParentRef} className="h-screen fixed z-10 top-0 w-full">
+      <div ref={stairParentRef} className="h-screen fixed z-20 top-0 w-full">
         <div className="h-full w-full flex ">
           <div className="stair h-full w-1/6 bg-black"></div>
           <div className="stair h-full w-1/6 bg-black"></div>

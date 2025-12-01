@@ -26,29 +26,35 @@ function Agence() {
     gsap.to(imageDivRef.current, {
       scrollTrigger: {
         trigger: imageDivRef.current,
-        start: 'top 65%',
-        end: 'top -110%',
+        start: "top 85%",
+        end: "top -110%",
         pin: true,
-        pinSpacing:true,
-        pinReparent:true,
-        scrub: true,
-        anticipateRefresh:true,
-        invalidateOnRefresh:true,
-        onUpdate: (event) => {
-          let imageIndex = Math.floor(event.progress * (imageArray.length-1));
+        pinSpacing: true,
+        pinReparent: true,
+        pinType: "transform",
+        scrub: 1, // smooth scrubbing with 1s easing
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+
+        onUpdate: (elem) => {
+          let imageIndex;
+          if (elem.progress < 1) {
+            imageIndex = Math.floor(elem.progress * imageArray.length);
+          } else {
+            imageIndex = imageArray.length - 1;
+          }
           imageRef.current.src = imageArray[imageIndex];
-          
         },
       },
     });
   });
 
   return (
-    <div >
-      <div className="section1 py-1">
+    <div>
+      <div className="section1 relative py-1">
         <div
           ref={imageDivRef}
-          className=" absolute overflow-hidden h-[19vw] top-55 left-[29.8vw] w-[15vw] -z-10 rounded-4xl"
+          className=" absolute overflow-hidden h-[19vw] top-[60vh] left-[29.8vw] w-[15vw] -z-10 rounded-4xl"
         >
           <img
             ref={imageRef}
