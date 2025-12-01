@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Agence from "./pages/Agence";
 
-
 const App = () => {
   return (
     <div className="text-white">

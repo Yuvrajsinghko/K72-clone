@@ -37,7 +37,7 @@ function Stairs(props) {
 
     gsap.from(pageRef.current, {
       opacity: 0,
-      delay:1.5,
+      delay:0.5,
       scale: 1.2,
     });
   }, [currentPath]);
