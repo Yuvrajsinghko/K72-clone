@@ -33,7 +33,7 @@ const Agence = () => {
       scrollTrigger: {
         trigger: imageDivRef.current,
         // markers: true,
-        start: 'top 80%',
+        start: 'top 60%',
         end: 'top -110%',
         pin: true,
         pinSpacing: true,
